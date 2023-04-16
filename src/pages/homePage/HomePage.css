@@ -1,0 +1,31 @@
+.home-background{
+    width: 100vw;
+    height: 55vw;
+    background-color: black;
+    display: inline-block;
+    background-image: url("../../assets/image/background.jpg");
+}
+
+.home-menu-container{
+    height:100%;
+    width: 50vw;
+    background-color: white;
+    margin: 0 auto;
+    z-index: 3;
+}
+
+.home-page-title{
+    font-size: 5vw;
+    font-weight: bold;
+    text-align: center;
+    margin:0;
+}
+
+.home-page-name-container h2{
+    height: 2vw;
+    background-color: white;
+    display: inline-block;
+    z-index: 3;
+    top: 0;
+    margin-left: 15px;
+}

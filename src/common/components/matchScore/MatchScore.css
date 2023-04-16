@@ -1,0 +1,35 @@
+.score-container{
+    background-color: lightgrey;
+    width: 95%;
+    height: 15vw;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+.score-name-container{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.score-name-container h2{
+ font-size: 2.5vw;
+ margin-top: 1.5%;
+}
+
+.score-points{
+    font-size: 5vw !important;
+    font-weight: bold !important;
+}
+
+.away-points{
+    color: red;
+    margin-right: 3vw !important;
+}
+
+.home-points{
+    color: blue;
+    margin-left: 3vw !important;
+}

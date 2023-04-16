@@ -1,0 +1,16 @@
+.player-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.player-list-item h3 {
+    display: inline-block;
+    margin: 0;
+}
+
+.player-list-container{
+    margin: 0 auto;
+    padding: 1%;
+}

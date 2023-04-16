@@ -1,0 +1,41 @@
+.navbar-container{
+    width: 100%;
+    height: 3.7vw;
+    background-color: black;
+    display: inline-block;
+    z-index: 3;
+    top: 0;
+    left: 0;
+}
+
+.navbar-container li{
+    color: white;
+    list-style-type: none;
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+}
+
+.navbar-container li:hover{
+    cursor: pointer;
+}
+
+.navbar-active{
+    background-color: lightskyblue;
+    color: white;
+    height: 100%;
+    text-decoration: underline;
+}
+.navbar-inactive{
+    background-color: dodgerblue;
+    color: white;
+    height: 100%;
+}
+
+.navbar-inactive:hover{
+    background-color: lightskyblue;
+    color: white;
+    height: 100%;
+}
