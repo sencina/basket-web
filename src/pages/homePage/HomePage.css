@@ -1,20 +1,23 @@
 .home-background{
     width: 100vw;
-    height: 55vw;
+    height: 100vh;
     background-color: black;
     display: inline-block;
-    background-image: url("../../assets/image/background.jpg");
+    background-image: url("../../assets/image/background2.jpg");
 }
 
 .home-menu-container{
-    height:100%;
-    width: 50vw;
-    background-color: white;
-    margin: 0 auto;
+    height:43.5vw;
+    width: 60vw;
+    background-color: rgba(42, 42, 42, 0.76);
+    margin: 4% auto;
     z-index: 3;
+    border-radius: 1.5vw;
 }
 
 .home-page-title{
+    color: white;
+    font-family: 'Fugaz One', cursive;
     font-size: 5vw;
     font-weight: bold;
     text-align: center;
@@ -28,4 +31,40 @@
     z-index: 3;
     top: 0;
     margin-left: 15px;
+}
+
+.home-statistics-container {
+    margin-top: 1vw;
+    margin-left: 2%;
+    height: 30vw;
+    width: 96%;
+    overflow-y: scroll;
+}
+
+/* Estilo básico de la scrollbar */
+::-webkit-scrollbar {
+    width: 0.8vw;
+    height: 0.8vw;
+}
+
+/* Estilo del riel de la scrollbar */
+::-webkit-scrollbar-track {
+    background-color: rgba(241, 241, 241, 0);
+    border-radius: 10px;
+}
+
+/* Estilo del thumb (agarre) de la scrollbar */
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+/* Estilo del thumb de la scrollbar cuando se está hover (sobre él) */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Estilo del thumb de la scrollbar cuando se está presionando el mouse */
+::-webkit-scrollbar-thumb:active {
+    background-color: #000;
 }

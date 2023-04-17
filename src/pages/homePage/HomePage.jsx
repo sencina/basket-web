@@ -27,15 +27,17 @@ const HomePage = () => {
                 <div className={'home-navbar-container'}>
                     <Navbar currentPage={'Match Statistics'}/>
                 </div>
-                <div className={'home-page-name-container'}>
-                    <h2>Match Statistics</h2>
+                <div className={'home-statistics-container'}>
+                    <div className={'home-page-name-container'}>
+                        <h2>Match Statistics</h2>
+                    </div>
+                    <MatchScore home={currentMatch.home} away={currentMatch.away}/>
+                    <AddPoints />
+                    <div className={'home-page-name-container'}>
+                        <h2>Players</h2>
+                    </div>
+                    <PlayerList/>
                 </div>
-                <MatchScore home={currentMatch.home} away={currentMatch.away}/>
-                <AddPoints />
-                <div className={'home-page-name-container'}>
-                    <h2>Players</h2>
-                </div>
-                <PlayerList/>
             </div>
         </div>
 
