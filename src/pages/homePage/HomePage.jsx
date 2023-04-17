@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import './HomePage.css'
-import Navbar from "../../common/components/navbar/Navbar";
-import MatchScore from "../../common/components/matchScore/MatchScore";
-import PlayerList from "../../common/components/playerList/PlayerList";
-import AddPoints from "../../common/components/addPoints/AddPoints";
+import Navbar from "../../common/component/navbar/Navbar";
+import MatchScore from "../../common/component/matchScore/MatchScore";
+import PlayerList from "../../common/component/playerList/PlayerList";
+import AddPoints from "../../common/component/addPoints/AddPoints";
 
 const HomePage = () => {
 
@@ -27,12 +27,14 @@ const HomePage = () => {
                 <div className={'home-navbar-container'}>
                     <Navbar currentPage={'Match Statistics'}/>
                 </div>
+                <div className={'search-match-container'}>
+                </div>
                 <div className={'home-statistics-container'}>
                     <div className={'home-page-name-container'}>
                         <h2>Match Statistics</h2>
                     </div>
                     <MatchScore home={currentMatch.home} away={currentMatch.away}/>
-                    <AddPoints />
+                    <AddPoints match={currentMatch}/>
                     <div className={'home-page-name-container'}>
                         <h2>Players</h2>
                     </div>
