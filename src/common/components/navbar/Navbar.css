@@ -24,14 +24,16 @@
 
 .navbar-active{
     background-color: #e5a475;
+    pointer-events: none; /*hace que no se pueda clickear*/
     color: white;
     height: 100%;
-    text-decoration: underline;
+    font-size: 1.3vw;
 }
 .navbar-inactive{
     background-color: #d36926;
     color: white;
     height: 100%;
+    font-size: 1.3vw;
 }
 
 .navbar-inactive:hover{

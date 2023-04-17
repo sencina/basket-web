@@ -32,11 +32,12 @@
 
 .home-page-name-container h2{
     height: 2vw;
+    font-size: 1.5vw;
     color: white;
     display: inline-block;
     z-index: 3;
     top: 0;
-    margin-left: 15px;
+    margin-left: 0.5vw;
     font-weight: lighter;
 }
 
