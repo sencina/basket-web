@@ -3,6 +3,7 @@ import './HomePage.css'
 import Navbar from "../../common/components/navbar/Navbar";
 import MatchScore from "../../common/components/matchScore/MatchScore";
 import PlayerList from "../../common/components/playerList/PlayerList";
+import AddPoints from "../../common/components/addPoints/AddPoints";
 
 const HomePage = () => {
 
@@ -30,6 +31,7 @@ const HomePage = () => {
                     <h2>Match Statistics</h2>
                 </div>
                 <MatchScore home={currentMatch.home} away={currentMatch.away}/>
+                <AddPoints />
                 <div className={'home-page-name-container'}>
                     <h2>Players</h2>
                 </div>
