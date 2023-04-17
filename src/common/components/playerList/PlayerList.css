@@ -8,6 +8,8 @@
 .player-list-item h3 {
     display: inline-block;
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
 }
 
 .player-list-container{

@@ -3,6 +3,7 @@
     height: 100vh;
     background-color: black;
     display: inline-block;
+    font-family: 'Russo One', sans-serif;
     background-image: url("../../assets/image/background2.jpg");
 }
 
@@ -16,7 +17,7 @@
 }
 
 .home-page-title{
-    color: white;
+    color: #ff6200;
     font-family: 'Fugaz One', cursive;
     font-size: 5vw;
     font-weight: bold;
@@ -24,16 +25,23 @@
     margin:0;
 }
 
+.home-page-title::before {
+    content: "BASKET";
+    color: white;
+}
+
 .home-page-name-container h2{
     height: 2vw;
-    background-color: white;
+    color: white;
     display: inline-block;
     z-index: 3;
     top: 0;
     margin-left: 15px;
+    font-weight: lighter;
 }
 
 .home-statistics-container {
+    color: white;
     margin-top: 1vw;
     margin-left: 2%;
     height: 30vw;
@@ -62,9 +70,4 @@
 /* Estilo del thumb de la scrollbar cuando se está hover (sobre él) */
 ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
-}
-
-/* Estilo del thumb de la scrollbar cuando se está presionando el mouse */
-::-webkit-scrollbar-thumb:active {
-    background-color: #000;
 }

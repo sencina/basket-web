@@ -22,7 +22,7 @@ const HomePage = () => {
         <div className={'home-background'}>
             <div className={'home-menu-container'}>
                 <div className={'home-title-container'}>
-                    <h1 className={'home-page-title'}>BASKET-WEB</h1>
+                    <h1 className={'home-page-title'}>-WEB</h1>
                 </div>
                 <div className={'home-navbar-container'}>
                     <Navbar currentPage={'Match Statistics'}/>

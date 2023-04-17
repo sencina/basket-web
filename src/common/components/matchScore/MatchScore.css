@@ -1,5 +1,5 @@
 .score-container{
-    background-color: lightgrey;
+    background-color: rgba(180, 180, 180, 0.49);
     width: 95%;
     height: 15vw;
     border-radius: 10px;
@@ -17,6 +17,7 @@
 .score-name-container h2{
  font-size: 2.5vw;
  margin-top: 1.5%;
+ font-weight: lighter;
 }
 
 .score-points{
@@ -25,11 +26,11 @@
 }
 
 .away-points{
-    color: red;
+    color: #ffa735;
     margin-right: 3vw !important;
 }
 
 .home-points{
-    color: blue;
+    color: #ffa735;
     margin-left: 3vw !important;
 }

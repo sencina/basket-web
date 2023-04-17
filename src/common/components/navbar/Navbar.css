@@ -23,19 +23,19 @@
 }
 
 .navbar-active{
-    background-color: lightskyblue;
+    background-color: #e5a475;
     color: white;
     height: 100%;
     text-decoration: underline;
 }
 .navbar-inactive{
-    background-color: dodgerblue;
+    background-color: #d36926;
     color: white;
     height: 100%;
 }
 
 .navbar-inactive:hover{
-    background-color: lightskyblue;
+    background-color: #e5a475;
     color: white;
     height: 100%;
 }
