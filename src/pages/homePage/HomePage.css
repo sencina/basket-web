@@ -10,14 +10,14 @@
 .home-menu-container{
     height:43.5vw;
     width: 60vw;
-    background-color: rgba(42, 42, 42, 0.76);
+    background-color: rgba(30, 35, 40, 0.78);
     margin: 4% auto;
     z-index: 3;
     border-radius: 1.5vw;
 }
 
 .home-page-title{
-    color: #ff6200;
+    color: rgb(255, 106, 0);
     font-family: 'Fugaz One', cursive;
     font-size: 5vw;
     font-weight: bold;
@@ -52,19 +52,22 @@
 
 /* Estilo básico de la scrollbar */
 ::-webkit-scrollbar {
+    padding-top: 2vw;
+    margin-top: 1vw;
     width: 0.8vw;
     height: 0.8vw;
 }
 
 /* Estilo del riel de la scrollbar */
 ::-webkit-scrollbar-track {
+    margin-top: 4.5vw;
     background-color: rgba(241, 241, 241, 0);
     border-radius: 10px;
 }
 
 /* Estilo del thumb (agarre) de la scrollbar */
 ::-webkit-scrollbar-thumb {
-    background-color: #888;
+    background-color: rgba(130, 130, 150, 0.44);
     border-radius: 10px;
 }
 
