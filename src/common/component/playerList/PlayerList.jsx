@@ -15,7 +15,7 @@ const PlayerList = () => {
         for(let i = 0; i < players.home.length; i++){
             toReturn.push(
                 <>
-                    <div className={'player-list-item'} key={i}>
+                    <div className={'player-list-item'} key={i} id={'players-row-'+i}>
                         <h3 className={'player-list-player-name'}>{players.home[i]}</h3>
                         <h3 className={'player-list-player-name away'}>{players.away[i]}</h3>
                     </div>
