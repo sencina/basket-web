@@ -47,8 +47,8 @@ const AddPointsModal = ({match, updateMatch}) => {
                 </div>
             )}
             {isVisibleAway && (
-                <div className="modal">
-                    <div className="modal-content">
+                <div className="modal" onClick={handleOutsideClick}>
+                    <div className="modal-content" ref={modalRef}>
                         <div className="modal-content-title">
                             <h2> Away </h2>
                         </div>
