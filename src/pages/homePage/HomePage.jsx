@@ -3,7 +3,7 @@ import './HomePage.css'
 import Navbar from "../../common/component/navbar/Navbar";
 import MatchScore from "../../common/component/matchScore/MatchScore";
 import PlayerList from "../../common/component/playerList/PlayerList";
-import AddPointsModal from "../../common/component/AddPointsModal/AddPointsModal";
+import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal";
 
 const HomePage = () => {
 

@@ -1,10 +1,11 @@
 import './AddPointsModal.css'
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 
-const AddPointsModal = (props) => {
+const AddPointsModal = ({match, updateMatch}) => {
 
     const [isVisibleHome, setIsVisibleHome] = useState(false);
     const [isVisibleAway, setIsVisibleAway] = useState(false);
+    const modalRef = useRef(null);
 
     const showHomeModal = () => {
         setIsVisibleHome(true);
@@ -22,20 +23,26 @@ const AddPointsModal = (props) => {
         setIsVisibleAway(false);
     };
 
+    const handleOutsideClick = (event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            hideHomeModal();
+            hideAwayModal();
+        }
+    };
+
     return(
         <div className={'add-points-container'}>
             <button className={'add-points-button'} onClick={showHomeModal}>Add points</button>
             <button className={'add-points-button'} onClick={showAwayModal}>Add points</button>
             {isVisibleHome && (
-                <div className="modal">
-                    <div className="modal-content">
+                <div className="modal" onClick={handleOutsideClick}>
+                    <div className="modal-content"  ref={modalRef}>
                         <div className="modal-content-title">
                             <h2> Home </h2>
                         </div>
                         <span className="close" onClick={hideHomeModal}>
                           &times;
                         </span>
-                        {props.children}
                     </div>
                 </div>
             )}
@@ -48,7 +55,6 @@ const AddPointsModal = (props) => {
                         <span className="close" onClick={hideAwayModal}>
                           &times;
                         </span>
-                        {props.children}
                     </div>
                 </div>
             )}
