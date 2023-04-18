@@ -40,7 +40,6 @@
     top: 0;
     margin-left: 0.5vw;
     font-weight: lighter;
-    -webkit-text-stroke: 0.05vw rgb(255, 106, 0);
 }
 
 .home-statistics-container {

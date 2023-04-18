@@ -15,9 +15,16 @@
 }
 
 .score-name-container h2{
- font-size: 2.5vw;
- margin-top: 1.5%;
- font-weight: lighter;
+    font-size: 2.5vw;
+    margin-top: 1%;
+    font-weight: lighter;
+}
+
+.score-name-container h3{
+    font-size: 2.5vw;
+    margin-top: 1%;
+    font-weight: lighter;
+    -webkit-text-stroke: 0.1vw rgb(255, 128, 0);
 }
 
 .score-points{

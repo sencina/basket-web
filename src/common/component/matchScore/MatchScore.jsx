@@ -8,7 +8,7 @@ const MatchScore = ({home, away}) => {
         <div className={'score-container'}>
             <div className={'score-name-container'}>
                 <h2 id={'homeName'}>{home.name}</h2>
-                <h2>vs</h2>
+                <h3>vs</h3>
                 <h2 id={'awayName'}>{away.name}</h2>
             </div>
             <div className={'score-name-container'}>
