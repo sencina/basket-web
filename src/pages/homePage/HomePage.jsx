@@ -8,13 +8,16 @@ import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal
 const HomePage = () => {
 
     const [currentMatch, setCurrentMatch] = useState({
+        id:1,
         home: {
             name: 'Home Team',
-            points: 69
+            points: 69,
+            players: ['player1', 'player2', 'player3', 'player4', 'player5']
         },
         away: {
             name: 'Away Team',
-            points: 42
+            points: 42,
+            players: ['player1', 'player2', 'player3', 'player4', 'player5']
         }
     })
 
@@ -33,12 +36,12 @@ const HomePage = () => {
                     <div className={'home-page-name-container'}>
                         <h2>Match Statistics</h2>
                     </div>
-                    <MatchScore home={currentMatch.home} away={currentMatch.away}/>
+                    <MatchScore id={'add-points-modal'} home={currentMatch.home} away={currentMatch.away}/>
                     <AddPointsModal match={currentMatch}/>
                     <div className={'home-page-name-container'}>
                         <h2>Players</h2>
                     </div>
-                    <PlayerList/>
+                    <PlayerList match={currentMatch}/>
                 </div>
             </div>
         </div>

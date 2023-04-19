@@ -1,0 +1,36 @@
+.labeled-input-container {
+    padding: 10px 0;
+    margin: 10px 0;
+    font-family: "URW Gothic", sans-serif;
+}
+
+.labeled-input-label {
+    font-weight: normal;
+    font-size: 20px;
+    margin: 5px 0 0;
+}
+
+.labeled-input-input {
+    position: absolute;
+    left: 2%;
+    width: 95%;
+}
+
+.error .labeled-input-input {
+    border: 1px solid red;
+}
+
+.labeled-input-errorMessage {
+    margin: 5px 0;
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+
+.error .labeled-input-errorMessage {
+    display: block;
+}
+
+.labeled-input-disabled {
+
+}
