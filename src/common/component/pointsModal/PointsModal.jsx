@@ -18,7 +18,7 @@ const PointsModal = ({modalRef,handleOutsideClick,handleChange, side, team, hand
                     <LabeledInput options={team.players} label={'Player'} handleChange={handleChange('playerId',team.name)} side={side}/>
                     <LabeledInput options={[1,2,3]} label={'Points'} handleChange={handleChange('points',team.name)} side={side}/>
                     <LabeledInput options={[1,2,3,4]} label={'Quarter'} handleChange={handleChange('quarter',team.name)} side={side}/>
-                    <LabeledInput options={[1,2,3,4,5,6,7,8,9,10,11,12]} label={'Minute'} handleChange={handleChange('minute',team.name)} side={side}/>
+                    <LabeledInput options={[0,1,2,3,4,5,6,7,8,9,10,11]} label={'Minute'} handleChange={handleChange('minute',team.name)} side={side}/>
                     <div className={'points-modal-button-container'}>
                         <button className={'add-points-button center-button'} onClick={handleSubmit}>Add points</button>
                     </div>

@@ -47,6 +47,18 @@ describe('<AddPointsModal />', () => {
         cy.get('#player-select-away').select(1)
         cy.get('#player-select-away').should('have.value', '7')
     });
+
+    it('should change select value from quarter', function () {
+        cy.get('#add-points-away').click()
+        cy.get('#quarter-select-away').select(1)
+        cy.get('#quarter-select-away').should('have.value', '2')
+    });
+
+    it('should change select value from minute', function () {
+        cy.get('#add-points-away').click()
+        cy.get('#minute-select-away').select(1)
+        cy.get('#minute-select-away').should('have.value', '1')
+    });
 })
 
 describe('AddPointsModal comoponent initializing correctly with disabled buttons', () => {
