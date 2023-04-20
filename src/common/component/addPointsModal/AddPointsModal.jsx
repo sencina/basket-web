@@ -1,6 +1,7 @@
 import './AddPointsModal.css'
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import LabeledInput from "../labeledInput/LabeledInput";
+import PointsModal from "../pointsModal/PointsModal";
 
 const AddPointsModal = ({match}) => {
 
@@ -8,10 +9,12 @@ const AddPointsModal = ({match}) => {
     const [isVisibleAway, setIsVisibleAway] = useState(false);
 
     const [scoreData, setScoreData] = useState({
-        matchId: match.id,
-        team: '',
-        player: '',
+        matchId: match.matchId,
+        teamId: '',
+        playerId: '',
         points: 0,
+        minute: 0,
+        quarter: 0,
     });
 
     const modalRef = useRef(null);
@@ -43,34 +46,19 @@ const AddPointsModal = ({match}) => {
         setScoreData({ ...scoreData, [prop]: event.target.value, team: team});
     };
 
+    const handleSubmit = () => {
+
+    }
+
     return(
         <div className={'add-points-container'}>
-            <button id={'add-points-home'} className={'add-points-button'} onClick={showHomeModal}>Add points</button>
-            <button id={'add-points-away'} className={'add-points-button'} onClick={showAwayModal}>Add points</button>
-            {isVisibleHome && Modal(match.home.players, hideHomeModal,modalRef,handleOutsideClick,handleChange,'home', match.home)}
-            {isVisibleAway && Modal(match.away.players, hideAwayModal,modalRef,handleOutsideClick,handleChange,'away',match.away)}
+            <button id={'add-points-home'} className={'add-points-button'} onClick={showHomeModal} disabled={match.isFinished}>Add points</button>
+            <button id={'add-points-away'} className={'add-points-button'} onClick={showAwayModal} disabled={match.isFinished}>Add points</button>
+            {isVisibleHome && <PointsModal handleChange={handleChange} hideHomeModal={handleOutsideClick} modalRef={modalRef} handleOutsideClick={handleOutsideClick} team={match.localTeam} side={'home'}/>}
+            {isVisibleAway && <PointsModal handleChange={handleChange} hideHomeModal={handleOutsideClick} modalRef={modalRef} handleOutsideClick={handleOutsideClick} team={match.awayTeam} side={'away'}/>}
         </div>
     )
 
-}
-
-const Modal = (players, hideHomeModal,modalRef,handleOutsideClick,handleChange, side, team) => {
-    return(
-        <div id={side+'-add-points-modal'} className="modal" onClick={handleOutsideClick}>
-            <div className="modal-content"  ref={modalRef}>
-                <div className="modal-content-title">
-                    <h2> {team.name} </h2>
-                </div>
-                <span className="close" onClick={hideHomeModal}>
-                          &times;
-                        </span>
-                <div className={'add-points-modal-input-containers'}>
-                    <LabeledInput options={players} label={'Player'} handleChange={handleChange('player',team.name)} side={side}/>
-                    <LabeledInput options={[1,2,3]} label={'Points'} handleChange={handleChange('points',team.name)} side={side}/>
-                </div>
-            </div>
-        </div>
-    )
 }
 
 export default AddPointsModal

@@ -7,7 +7,8 @@ const LabeledInput = ({label, options, errorMessage, error, handleChange,side}) 
         const toReturn = []
         for(const index in options){
             const option = options[index]
-            toReturn.push(<option key={option} value={option}>{option}</option>)
+            if (typeof option === "object") toReturn.push(<option key={option.id} value={option.id}>{option.name}</option>)
+            else toReturn.push(<option key={option} value={option}>{option}</option>)
         }
         return toReturn
     }

@@ -4,17 +4,20 @@ import AddPointsModal from '../../../common/component/addPointsModal/AddPointsMo
 describe('<AddPointsModal />', () => {
     beforeEach(() => {
       cy.mount(<AddPointsModal match={{
-        id: 1,
-        home: {
-        name: 'Home Team',
-        points: 69,
-        players: ['player1', 'player2', 'player3', 'player4', 'player5']
-      },
-        away: {
-        name: 'Away Team',
-        points: 42,
-        players: ['player1', 'player2', 'player3', 'player4', 'player5']
-      }
+          matchId:'1',
+          localTeam: {
+              teamId: 1,
+              name: 'Home Team',
+              score: 69,
+              players: [{id:'1',name: 'player1'}, {id:'2',name: 'player2'},{id:'3',name: 'player3'}, {id:'4',name: 'player4'}, {id:'5',name: 'player5'}]
+          },
+          awayTeam: {
+              teamId: 2,
+              name: 'Away Team',
+              score: 42,
+              players: [{id:'6',name: 'player1'}, {id:'7',name: 'player2'},{id:'8',name: 'player3'}, {id:'9',name: 'player4'}, {id:'0',name: 'player5'}]
+          },
+          isFinished: false
       }}/>)
     })
     it('renders', () => {
@@ -42,6 +45,33 @@ describe('<AddPointsModal />', () => {
     it('should change select value from player', function () {
         cy.get('#add-points-away').click()
         cy.get('#player-select-away').select(1)
-        cy.get('#player-select-away').should('have.value', 'player2')
+        cy.get('#player-select-away').should('have.value', '7')
     });
+})
+
+describe('AddPointsModal comoponent initializing correctly with disabled buttons', () => {
+
+    beforeEach(() => {
+     cy.mount(<AddPointsModal match={{
+          matchId:'1',
+          localTeam: {
+                teamId: 1,
+                name: 'Home Team',
+                score: 69,
+                players: [{id:'1',name: 'player1'}, {id:'2',name: 'player2'},{id:'3',name: 'player3'}, {id:'4',name: 'player4'}, {id:'5',name: 'player5'}]
+          },
+          awayTeam: {
+                teamId: 2,
+                name: 'Away Team',
+                score: 42,
+                players: [{id:'6',name: 'player1'}, {id:'7',name: 'player2'},{id:'8',name: 'player3'}, {id:'9',name: 'player4'}, {id:'0',name: 'player5'}]
+          },
+          isFinished: true
+     }}/>)
+      })
+
+      it('should have disabled buttons', function () {
+        cy.get('#add-points-home').should('be.disabled')
+        cy.get('#add-points-away').should('be.disabled')
+      });
 })

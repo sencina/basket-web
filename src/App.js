@@ -1,11 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
-import {Navigate, Outlet, Routes} from "react-router";
+import {Routes} from "react-router";
 import {BrowserRouter, Route} from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
-
-
-
 
 function App() {
   return (

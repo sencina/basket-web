@@ -8,17 +8,20 @@ import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal
 const HomePage = () => {
 
     const [currentMatch, setCurrentMatch] = useState({
-        id:1,
-        home: {
+        matchId:'1',
+        localTeam: {
+            teamId: 1,
             name: 'Home Team',
-            points: 69,
-            players: ['player1', 'player2', 'player3', 'player4', 'player5']
+            score: 69,
+            players: [{id:'1',name: 'player1'}, {id:'2',name: 'player2'},{id:'3',name: 'player3'}, {id:'4',name: 'player4'}, {id:'5',name: 'player5'}]
         },
-        away: {
+        awayTeam: {
+            teamId: 2,
             name: 'Away Team',
-            points: 42,
-            players: ['player1', 'player2', 'player3', 'player4', 'player5']
-        }
+            score: 42,
+            players: [{id:'6',name: 'player1'}, {id:'7',name: 'player2'},{id:'8',name: 'player3'}, {id:'9',name: 'player4'}, {id:'0',name: 'player5'}]
+        },
+        isFinished: false
     })
 
     return(
@@ -36,7 +39,7 @@ const HomePage = () => {
                     <div className={'home-page-name-container'}>
                         <h2>Match Statistics</h2>
                     </div>
-                    <MatchScore id={'add-points-modal'} home={currentMatch.home} away={currentMatch.away}/>
+                    <MatchScore id={'add-points-modal'} match={currentMatch}/>
                     <AddPointsModal match={currentMatch}/>
                     <div className={'home-page-name-container'}>
                         <h2>Players</h2>
