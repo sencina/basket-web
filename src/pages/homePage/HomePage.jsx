@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import './HomePage.css'
-import Navbar from "../../common/component/navbar/Navbar";
 import MatchScore from "../../common/component/matchScore/MatchScore";
 import PlayerList from "../../common/component/playerList/PlayerList";
 import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal";
@@ -30,9 +29,6 @@ const HomePage = () => {
                 <div className={'home-title-container'}>
                     <h1 className={'home-page-title'}>-WEB</h1>
                 </div>
-                <div className={'home-navbar-container'}>
-                    <Navbar currentPage={'Match Statistics'}/>
-                </div>
                 <div className={'search-match-container'}>
                 </div>
                 <div className={'home-statistics-container'}>
@@ -47,8 +43,10 @@ const HomePage = () => {
                     <PlayerList match={currentMatch}/>
                 </div>
             </div>
-        </div>
+            <div className={'add-find-match-container'}>
 
+            </div>
+        </div>
 
     )
 
