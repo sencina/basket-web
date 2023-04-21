@@ -1,0 +1,28 @@
+.modal-content-foul h2::before {
+    content: "Add";
+    color: white;
+}
+
+.modal-content-foul h2::after {
+    content: "Foul";
+    color: white;
+}
+
+.modal-content-foul {
+    background-color: rgba(63, 63, 73, 0.95);
+    margin: 10% auto;
+    padding: 1vw;
+    height: 30vw;
+    width: 40vw;
+    border-radius: 1vw;
+    position: relative;
+    border: 0.1vw solid rgba(255, 128, 0, 0.78);
+}
+
+.modal-content-foul h2 {
+    color: rgba(255, 128, 0, 0.78);
+    margin-top: 2%;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 2vw;
+}

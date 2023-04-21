@@ -12,7 +12,7 @@ describe('<PlayerList />', () => {
         score: 69,
         players: [{id:'1',name: 'player1'}, {id:'2',name: 'player2'},{id:'3',name: 'player3'}, {id:'4',name: 'player4'}, {id:'5',name: 'player5'}]
       },
-      awayTeam: {
+      visitorTeam: {
         teamId: 2,
         name: 'Away Team',
         score: 42,

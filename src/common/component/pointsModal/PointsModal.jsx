@@ -2,10 +2,10 @@ import React, {useEffect} from 'react'
 import './PointsModal.css'
 import LabeledInput from "../labeledInput/LabeledInput";
 
-const PointsModal = ({modalRef,handleOutsideClick,handleChange, side, team, handleSubmit}) => {
+const PointsModal = ({modalRef,handleOutsideClick,handleChange, side, team, handleSubmit, handleRender}) => {
 
     useEffect(() => {
-        handleChange('teamId',team.teamId)({target: {value: team.teamId}})
+        handleRender()
     })
 
     return(

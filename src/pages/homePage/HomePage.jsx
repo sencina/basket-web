@@ -14,11 +14,11 @@ const HomePage = () => {
             score: 69,
             players: [{id:'1',name: 'player1'}, {id:'2',name: 'player2'},{id:'3',name: 'player3'}, {id:'4',name: 'player4'}, {id:'5',name: 'player5'}]
         },
-        awayTeam: {
+        visitorTeam: {
             teamId: 2,
             name: 'Away Team',
             score: 42,
-            players: [{id:'6',name: 'player1'}, {id:'7',name: 'player2'},{id:'8',name: 'player3'}, {id:'9',name: 'player4'}, {id:'0',name: 'player5'}]
+            players: [{id:'6',name: 'player6'}, {id:'7',name: 'player7'},{id:'8',name: 'player8'}, {id:'9',name: 'player9'}, {id:'0',name: 'player0'}]
         },
         isFinished: false
     })
