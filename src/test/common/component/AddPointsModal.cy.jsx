@@ -59,6 +59,30 @@ describe('<AddPointsModal />', () => {
         cy.get('#minute-select-away').select(1)
         cy.get('#minute-select-away').should('have.value', '1')
     });
+
+    it('should change player select in foul modal', function () {
+        cy.get('#add-foul-away').click()
+        cy.get('#player-select-away').select(1)
+        cy.get('#player-select-away').should('have.value','7')
+    });
+
+    it('should change type select in foul modal', function () {
+        cy.get('#add-foul-away').click()
+        cy.get('#type-select-away').select(1)
+        cy.get('#type-select-away').should('have.value','Red Card')
+    });
+
+    it('should change quarter select in foul modal', function () {
+        cy.get('#add-foul-away').click()
+        cy.get('#quarter-select-away').select(1)
+        cy.get('#quarter-select-away').should('have.value','2')
+    });
+
+    it('should change minute select in foul modal', function () {
+        cy.get('#add-foul-away').click()
+        cy.get('#minute-select-away').select(1)
+        cy.get('#minute-select-away').should('have.value','1')
+    });
 })
 
 describe('AddPointsModal comoponent initializing correctly with disabled buttons', () => {
@@ -85,5 +109,7 @@ describe('AddPointsModal comoponent initializing correctly with disabled buttons
       it('should have disabled buttons', function () {
         cy.get('#add-points-home').should('be.disabled')
         cy.get('#add-points-away').should('be.disabled')
+        cy.get('#add-foul-away').should('be.disabled')
+        cy.get('#add-foul-away').should('be.disabled')
       });
 })

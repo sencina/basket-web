@@ -1,0 +1,10 @@
+.create-modal-content-title{
+    background-color: rgba(63, 63, 73, 0.95);
+    margin: 10% auto;
+    padding: 1vw;
+    height: 30vw;
+    width: 40vw;
+    border-radius: 1vw;
+    position: relative;
+    border: 0.1vw solid rgba(255, 128, 0, 0.78);
+}
