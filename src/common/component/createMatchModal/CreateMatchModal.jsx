@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import LabeledInput from "../labeledInput/LabeledInput";
 import TeamLabelSelect from "../teamLabel/TeamLabelSelect";
-const CreateMatchModal = ({handleSubmit,handleOutsideClick, teams, locations}) => {
+import {useRequestService} from "../../../service/requestService";
+const CreateMatchModal = ({handleOutsideClick, teams, locations}) => {
+
+    const service = useRequestService()
 
     const [matchData, setMatchData] = useState({
-        localTeamId: teams[0].teamId,
-        visitorTeamId: teams[0].teamId,
+        localTeamId: teams[0].id,
+        visitorTeamId: teams[0].id,
         location: locations[0]
     })
 
@@ -13,8 +16,16 @@ const CreateMatchModal = ({handleSubmit,handleOutsideClick, teams, locations}) =
         setMatchData({...matchData,[props]: event.target.value})
     }
 
+    const handleSubmit = () => {
+        console.log(matchData)
+        service.addMatch(matchData).then(response => {
+            handleOutsideClick()
+        })
+    }
+
     return(
-        <div id={'create-match-modal'} className="modal" onClick={handleOutsideClick}>
+
+        <div id={'create-match-modal'} className="modal" >
             <div className="modal-content">
                 <div className="create-modal-content-title">
                     <h2> Create Match </h2>
@@ -25,9 +36,9 @@ const CreateMatchModal = ({handleSubmit,handleOutsideClick, teams, locations}) =
                     <LabeledInput options={locations} label={'Location'} handleChange={handleChange('location')} side={'location'}/>
                 </div>
                     <div className={'points-modal-button-container'}>
+                        <button className={'add-points-button center-button'} onClick={handleOutsideClick}>Cancel</button>
                         <button className={'add-points-button center-button'} onClick={handleSubmit}>Create Match</button>
                     </div>
-
             </div>
         </div>
     )

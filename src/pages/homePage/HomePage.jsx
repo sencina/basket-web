@@ -1,12 +1,14 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './HomePage.css'
 import MatchScore from "../../common/component/matchScore/MatchScore";
 import PlayerList from "../../common/component/playerList/PlayerList";
 import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal";
 import CreateMatchModal from "../../common/component/createMatchModal/CreateMatchModal";
+import {useRequestService} from "../../service/requestService";
 
 const HomePage = () => {
 
+    const service = useRequestService()
     const [currentMatch, setCurrentMatch] = useState({
         matchId:'1',
         localTeam: {
@@ -64,32 +66,67 @@ const HomePage = () => {
         setMatchData({...matchData, [key]: event.target.value})
     }
 
-    const handleSubmit = (match) => {
-
-    }
-
     const handleButtonClick = () => {
         setShowCreateMatchModal(true)
     }
 
     const handleOutsideClick = () => {
         setShowCreateMatchModal(false)
+        try{
+            service.getMatches().then(response => {
+                setMatches(response.data)
+            })
+        }catch (e){
+            console.log(e)
+        }
     }
 
     const appendMatches = () => {
         const toReturn = []
         for(const index in matches){
             const match = matches[index]
-            toReturn.push(<option value={match.matchId}>{match.localTeam.name} vs {match.visitorTeam.name}</option>)
+            toReturn.push(<option value={match.id}>{match.localTeam.name} vs {match.visitorTeam.name}</option>)
         }
         return toReturn
     }
 
     const handleMatchChange = (event) => {
         const matchId = event.target.value
-        const match = matches.find(match => match.matchId === matchId)
+        const match = matches.find(match => match.id === matchId)
         setCurrentMatch(match)
     }
+
+    const handlePointsRefresh = () => {
+        try {
+            service.getMatch(currentMatch.id).then(response => {
+                setCurrentMatch(response.data)
+            })
+        }catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect( () => {
+        try {
+            service.getMatches().then(response => {
+                setMatches(response.data)
+                setCurrentMatch(response.data[0])
+            })
+        }catch (e) {
+            console.log(e)
+        }
+
+    },[])
+
+    useEffect( () => {
+        try{
+            service.getTeams().then(response => {
+                setTeams(response.data)
+            })
+        }catch (e){
+            console.log(e)
+        }
+    })
 
     return(
         <div className={'home-background'}>
@@ -108,14 +145,14 @@ const HomePage = () => {
                         </select>
                     </div>
                     <MatchScore id={'add-points-modal'} match={currentMatch}/>
-                    <AddPointsModal match={currentMatch}/>
+                    <AddPointsModal match={currentMatch} handleRefresh={handlePointsRefresh}/>
                     <div className={'home-page-name-container'}>
                         <h2>Players</h2>
                     </div>
                     <PlayerList match={currentMatch}/>
                 </div>
             </div>
-            {showCreateMatchModal && <CreateMatchModal handleChange={handleChangeData} handleSubmit={handleSubmit} handleOutsideClick={handleOutsideClick} teams={teams} locations={locations}/>}
+            {showCreateMatchModal && <CreateMatchModal handleChange={handleChangeData} handleOutsideClick={handleOutsideClick} teams={teams} locations={locations}/>}
         </div>
 
     )

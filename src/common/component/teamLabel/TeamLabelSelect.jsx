@@ -5,7 +5,7 @@ const TeamLabelSelect = ({options, label, side, handleChange}) => {
         const toReturn = []
         for(const index in options){
             const option = options[index]
-            toReturn.push(<option value={option.teamId}>{option.name}</option>)
+            toReturn.push(<option value={option.id}>{option.name}</option>)
         }
         return toReturn
     }

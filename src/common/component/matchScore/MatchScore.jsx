@@ -12,9 +12,9 @@ const MatchScore = ({match}) => {
                 <h2 id={'awayName'}>{match.visitorTeam.name}</h2>
             </div>
             <div className={'score-name-container'}>
-                <h2 className={'score-points home-points'} id={'homePoints'}>{match.localTeam.score}</h2>
+                <h2 className={'score-points home-points'} id={'homePoints'}>{!match.localTeam.score ? 0 : match.localTeam.score}</h2>
                 <h3 className={'score-is-finished-label'}>{match.isFinished ? 'Finished' : 'Live'}</h3>
-                <h2 className={'score-points away-points'} id={'awayPoints'}>{match.visitorTeam.score}</h2>
+                <h2 className={'score-points away-points'} id={'awayPoints'}>{!match.visitorTeam.score ? 0 : match.visitorTeam.score}</h2>
             </div>
         </div>
     )
