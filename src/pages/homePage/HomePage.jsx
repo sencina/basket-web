@@ -112,21 +112,14 @@ const HomePage = () => {
                 setMatches(response.data)
                 setCurrentMatch(response.data[0])
             })
+            service.getTeams().then(response => {
+                setTeams(response.data)
+            })
         }catch (e) {
             console.log(e)
         }
 
     },[])
-
-    useEffect( () => {
-        try{
-            service.getTeams().then(response => {
-                setTeams(response.data)
-            })
-        }catch (e){
-            console.log(e)
-        }
-    })
 
     return(
         <div className={'home-background'}>
