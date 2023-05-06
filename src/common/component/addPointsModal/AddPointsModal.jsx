@@ -1,5 +1,5 @@
 import './AddPointsModal.css'
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import PointsModal from "../pointsModal/PointsModal";
 import FoulModal from "../foulModal/FoulModal";
 import {useRequestService} from "../../../service/requestService";
@@ -16,18 +16,19 @@ const AddPointsModal = ({match, handleRefresh}) => {
     const [scoreData, setScoreData] = useState({
         matchId: match.id,
         playerId: match.localTeam.players[0].id,
-        points: 0
+        points: 1
     });
 
     const [foulData, setFoulData] = useState({
         matchId: match.id,
-        playerId: '',
+        playerId: match.localTeam.players[0].id,
         type: 'YELLOW_CARD'
     });
 
     const modalRef = useRef(null);
 
     const showHomeModal = () => {
+        setScoreData({...scoreData, matchId: match.id, playerId: match.localTeam.players[0].id})
         setIsVisibleHome(true);
     };
 
@@ -36,6 +37,7 @@ const AddPointsModal = ({match, handleRefresh}) => {
     };
 
     const showAwayModal = () => {
+        setScoreData({...scoreData, matchId: match.id, playerId: match.visitorTeam.players[0].id})
         setIsVisibleAway(true);
     };
 
@@ -44,10 +46,13 @@ const AddPointsModal = ({match, handleRefresh}) => {
     };
 
     const hideAwayFoulModal = () => {
+        setFoulData({...foulData, matchId: match.id, playerId: match.localTeam.players[0].id})
         setIsVisibleAwayFault(false);
     }
 
     const hideHomeFoulModal = () => {
+        setFoulData({...foulData, matchId: match.id, playerId: match.visitorTeam.players[0].id})
+
         setIsVisibleHomeFault(false);
     }
 
@@ -92,6 +97,10 @@ const AddPointsModal = ({match, handleRefresh}) => {
         hideAwayFoulModal();
         hideHomeFoulModal();
     }
+
+
+
+
 
     return(
         <div className={'add-points-container'}>
