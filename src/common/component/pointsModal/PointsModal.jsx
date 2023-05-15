@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import './PointsModal.css'
 import LabeledInput from "../labeledInput/LabeledInput";
 
-const PointsModal = ({modalRef,handleOutsideClick,handleChange, team, handleSubmit, handleRender, side}) => {
+const PointsModal = ({modalRef,handleOutsideClick,handleChange, team, handleSubmit, side}) => {
 
     return(
         <div id={side+'-add-points-modal'} className="modal" onClick={handleOutsideClick}>

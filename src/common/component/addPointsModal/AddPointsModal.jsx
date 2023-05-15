@@ -4,7 +4,7 @@ import PointsModal from "../pointsModal/PointsModal";
 import FoulModal from "../foulModal/FoulModal";
 import {useRequestService} from "../../../service/requestService";
 
-const AddPointsModal = ({match, handleRefresh}) => {
+const AddPointsModal = ({match, handleRefresh, id}) => {
 
     const service = useRequestService()
 
@@ -14,13 +14,13 @@ const AddPointsModal = ({match, handleRefresh}) => {
     const [isVisibleAwayFault, setIsVisibleAwayFault] = useState(false);
 
     const [scoreData, setScoreData] = useState({
-        matchId: match.id,
+        matchId: id,
         playerId: match.localTeam.players[0].id,
         points: 1
     });
 
     const [foulData, setFoulData] = useState({
-        matchId: match.id,
+        matchId: id,
         playerId: match.localTeam.players[0].id,
         type: 'YELLOW_CARD'
     });
@@ -82,7 +82,11 @@ const AddPointsModal = ({match, handleRefresh}) => {
     }
 
     const handlePointsModalRender = (playerId) => {
-        setScoreData({...scoreData, playerId: playerId})
+        setScoreData({...scoreData, matchId: match.id, playerId: playerId})
+    }
+
+    const handleFoulModalRender = (playerId) => {
+        setFoulData({...foulData, matchId: match.id, playerId: playerId})
     }
 
     const handleSubmitPoints = async () => {
@@ -98,10 +102,6 @@ const AddPointsModal = ({match, handleRefresh}) => {
         hideHomeFoulModal();
     }
 
-
-
-
-
     return(
         <div className={'add-points-container'}>
             <div className={'button-pair-container'}>
@@ -114,8 +114,8 @@ const AddPointsModal = ({match, handleRefresh}) => {
             </div>
             {isVisibleHome && <PointsModal handleChange={handleChangeScore} hideHomeModal={handleOutsideClick} modalRef={modalRef} handleOutsideClick={handleOutsideClick} team={match.localTeam} handleRender={handlePointsModalRender} handleSubmit={handleSubmitPoints} side={'home'}/>}
             {isVisibleAway && <PointsModal handleChange={handleChangeScore} hideHomeModal={handleOutsideClick} modalRef={modalRef} handleOutsideClick={handleOutsideClick} team={match.visitorTeam} handleRender={handlePointsModalRender} handleSubmit={handleSubmitPoints} side={'away'}/>}
-            {isVisibleHomeFault && <FoulModal handleChange={handleChangeFoul} hideHomeModal={handleOutsideClick} modalRef={modalRef} handleOutsideClick={handleOutsideClick} team={match.localTeam} side={'home'} handleSubmit={handleSubmitFault} />}
-            {isVisibleAwayFault && <FoulModal handleChange={handleChangeFoul} hideHomeModal={handleOutsideClick} modalRef={modalRef} handleOutsideClick={handleOutsideClick} team={match.visitorTeam} side={'away'} handleSubmit={handleSubmitFault} />}
+            {isVisibleHomeFault && <FoulModal handleChange={handleChangeFoul} hideHomeModal={handleOutsideClick} modalRef={modalRef} handleOutsideClick={handleOutsideClick} team={match.localTeam} side={'home'} handleSubmit={handleSubmitFault} handleRender={handleFoulModalRender}/>}
+            {isVisibleAwayFault && <FoulModal handleChange={handleChangeFoul} hideHomeModal={handleOutsideClick} modalRef={modalRef} handleOutsideClick={handleOutsideClick} team={match.visitorTeam} side={'away'} handleSubmit={handleSubmitFault} handleRender={handleFoulModalRender}/>}
         </div>
     )
 

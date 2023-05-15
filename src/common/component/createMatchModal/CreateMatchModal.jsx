@@ -34,7 +34,7 @@ const CreateMatchModal = ({handleOutsideClick, teams, locations}) => {
     return(
 
         <div id={'create-match-modal'} className="modal" >
-            <div className="modal-content">
+            <div id={'create-match-modal-content'} className="modal-content">
                 <div className="create-modal-content-title">
                     <h2> Create Match </h2>
                 </div>
@@ -46,7 +46,7 @@ const CreateMatchModal = ({handleOutsideClick, teams, locations}) => {
                 </div>
                     <div className={'points-modal-button-container'}>
                         <button className={'add-points-button center-button'} onClick={handleOutsideClick}>Cancel</button>
-                        <button className={'add-points-button center-button'} onClick={handleSubmit}>Create Match</button>
+                        <button id={'create-match-button-submit'} className={'add-points-button center-button'} onClick={handleSubmit}>Create Match</button>
                     </div>
             </div>
         </div>

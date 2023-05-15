@@ -11,13 +11,15 @@ describe('template spec', () => {
 
         cy.get('#add-foul-home').click()
 
-        cy.get('#submit-add-points-button').click()
+        cy.wait(1000) //so data loads
+        //select the second player
 
+        cy.get('#player-select-home').select(1);
+
+        cy.get('#submit-add-foul-button').click()
         cy.wait(1000) //so data loads
 
-        cy.get('#homePoints').invoke('text').then(text => {
-            text.match(/^[0-9]*$/)
-        })
+        cy.get('#add-foul-modal-content').should('not.exist');
 
     })
 })

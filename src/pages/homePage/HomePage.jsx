@@ -61,6 +61,7 @@ const HomePage = () => {
             isFinished: false
         }
     ])
+    const [currentMatchId, setCurrentMatchId] = useState('90fc3362-ed42-449d-941c-8586adc13db1')
 
     const handleChangeData = (key) => (event) => {
         setMatchData({...matchData, [key]: event.target.value})
@@ -111,6 +112,7 @@ const HomePage = () => {
             service.getMatches().then(response => {
                 setMatches(response.data)
                 setCurrentMatch(response.data[0])
+                setCurrentMatchId(response.data[0].id)
             })
             service.getTeams().then(response => {
                 setTeams(response.data)
@@ -138,7 +140,7 @@ const HomePage = () => {
                         </select>
                     </div>
                     <MatchScore id={'add-points-modal'} match={currentMatch}/>
-                    <AddPointsModal match={currentMatch} handleRefresh={handlePointsRefresh}/>
+                    <AddPointsModal match={currentMatch} handleRefresh={handlePointsRefresh} id={currentMatchId}/>
                     <div className={'home-page-name-container'}>
                         <h2>Players</h2>
                     </div>

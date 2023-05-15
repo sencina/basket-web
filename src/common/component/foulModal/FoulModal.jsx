@@ -2,11 +2,11 @@ import React, {useEffect} from 'react'
 import './FoulModal.css'
 import LabeledInput from "../labeledInput/LabeledInput";
 
-const FoulModal = ({modalRef,handleOutsideClick,handleChange, side, team, handleSubmit}) => {
+const FoulModal = ({modalRef,handleOutsideClick,handleChange, side, team, handleSubmit, handleRender}) => {
 
     return(
         <div id={side+'-add-points-modal'} className="modal" onClick={handleOutsideClick}>
-            <div className="modal-content-foul"  ref={modalRef}>
+            <div id={'add-foul-modal-content'} className="modal-content-foul"  ref={modalRef}>
                 <div className="modal-content-title">
                     <h2> {team.name} </h2>
                 </div>
@@ -16,7 +16,7 @@ const FoulModal = ({modalRef,handleOutsideClick,handleChange, side, team, handle
                     {/*<LabeledInput options={[1,2,3,4]} label={'Quarter'} handleChange={handleChange('quarter')} side={side}/>*/}
                     {/*<LabeledInput options={[0,1,2,3,4,5,6,7,8,9,10,11]} label={'Minute'} handleChange={handleChange('minute')} side={side}/>*/}
                     <div className={'points-modal-button-container'}>
-                        <button className={'add-points-button center-button'} onClick={handleSubmit}>Add foul</button>
+                        <button id={'submit-add-foul-button'} className={'add-points-button center-button'} onClick={handleSubmit}>Add foul</button>
                     </div>
                 </div>
             </div>
