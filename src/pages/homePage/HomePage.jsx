@@ -125,7 +125,7 @@ const HomePage = () => {
         <div className={'home-background'}>
             <div className={'home-menu-container'}>
                 <div className={'home-title-container'}>
-                    <h1 className={'home-page-title'}>-WEB</h1>
+                    <h1 id={'home-page-title'} className={'home-page-title'}>-WEB</h1>
                 </div>
                 <div className={'search-match-container'}>
                 </div>
@@ -133,7 +133,7 @@ const HomePage = () => {
                     <div className={'home-page-name-container'}>
                         <h2>Match Statistics</h2>
                         <button id={'create-modal-button'} className={'home-page-button'} onClick={handleButtonClick}>Create Match</button>
-                        <select className={'matches-select'} onChange={handleMatchChange}>
+                        <select id={'change-match-select'} className={'matches-select'} onChange={handleMatchChange}>
                             {appendMatches()}
                         </select>
                     </div>
