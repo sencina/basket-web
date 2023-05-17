@@ -7,7 +7,7 @@ const requestService = {
         return await axios.get(URL+'/match/all')
     },
     getPreviousSeason: async () => {
-        return await axios.get(URL+'match/previous-season')
+        return await axios.get(URL+'/match/previous-season')
     },
     addMatch: async (match) => {
 
