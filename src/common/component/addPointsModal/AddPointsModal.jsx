@@ -81,12 +81,6 @@ const AddPointsModal = ({match, handleRefresh, id, scoreData, foulData, setScore
     const modalHandleSubmitPoints = () => {
         handleSubmitPoints();
         handleRefresh()
-        hideAwayModal()
-        hideHomeModal()
-        wait(1000).then(() => {
-        location.reload()
-            wait(1000)
-        })
     }
 
     const modalHandleSubmitFault = () => {

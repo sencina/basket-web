@@ -35,6 +35,7 @@
     ]
   },
   "devDependencies": {
+    "cypress-istanbul": "^1.3.0",
     "http-proxy-middleware": "^2.0.6"
   }
 }

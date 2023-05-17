@@ -5,9 +5,12 @@ import PlayerList from "../../common/component/playerList/PlayerList";
 import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal";
 import CreateMatchModal from "../../common/component/createMatchModal/CreateMatchModal";
 import {useNavigate} from "react-router";
+import {useRequestService} from "../../service/requestService";
+import {wait} from "@testing-library/user-event/dist/utils";
 
-const HomePage = ({service}) => {
+const HomePage = () => {
 
+    const service = useRequestService()
     const [currentMatch, setCurrentMatch] = useState({
         matchId:'1',
         localTeam: {
@@ -77,7 +80,7 @@ const HomePage = ({service}) => {
         type: 'YELLOW_CARD'
     });
 
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
 
     const handleChangeData = (key) => (event) => {
         setMatchData({...matchData, [key]: event.target.value})
@@ -120,6 +123,7 @@ const HomePage = ({service}) => {
 
     const handleSubmitPoints = async () => {
         await service.addPoints(scoreData);
+        window.location.reload()
     }
 
     const handleSubmitFault = async () => {
@@ -127,15 +131,14 @@ const HomePage = ({service}) => {
     }
 
     const handleClick = () => {
-        navigate('/all-matches');
+        window.location.href = '/all-matches'
+        // navigate('/all-matches');
     };
 
     useEffect( () => {
         try {
             service.getMatches().then(response => {
-                // setMatches((prevState) => {prevState, response.data})
-                // setCurrentMatch((prevState) => {prevState, response.data[0]})
-                // setCurrentMatchId((prevState) => {prevState, response.data[0].id})
+
                 if (response.data.length === 0) return
                 setMatches(response.data)
                 setCurrentMatch(response.data[0])

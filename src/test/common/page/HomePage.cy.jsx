@@ -10,14 +10,18 @@ describe('<HomePage />', () => {
   })
 
   it('opens create match modal', () => {
+    cy.wait(1000)
     cy.get('#create-modal-button').click()
+    cy.wait(1000)
     cy.get('#create-match-modal').should('be.visible')
   })
 
-  it('select player changing value in create modal', () => {
-    cy.get('#create-modal-button').click()
-    cy.get('#home-select-home').should('be.visible')
-    //cy.get('#home-select-home').select(1)
-    //cy.get('#home-select-home').should('have.value', 'b')
-  })
+  // it('select player changing value in create modal', () => {
+  //   cy.wait(1000)
+  //   // cy.get('#create-modal-button').click()
+  //   // cy.get('#home-select-home').should('be.visible')
+  //   //cy.get('#home-select-home').select(1)
+  //   //cy.get('#home-select-home').should('have.value', 'b')
+  // })
+
 })

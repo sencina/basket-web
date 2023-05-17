@@ -8,7 +8,7 @@
     background-image: url("../../assets/image/background3.jpg");
 }
 
-.home-page-title::before {
+.all-page-title::before {
     content: "ALL";
     color: white;
 }
