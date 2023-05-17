@@ -3,6 +3,7 @@ import React, {useState, useRef, useEffect} from "react";
 import PointsModal from "../pointsModal/PointsModal";
 import FoulModal from "../foulModal/FoulModal";
 import {useRequestService} from "../../../service/requestService";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 const AddPointsModal = ({match, handleRefresh, id, scoreData, foulData, setScoreData, setFoulData, handleSubmitPoints, handleSubmitFoul}) => {
 
@@ -82,14 +83,17 @@ const AddPointsModal = ({match, handleRefresh, id, scoreData, foulData, setScore
         handleRefresh()
         hideAwayModal()
         hideHomeModal()
+        wait(1000).then(() => {
         location.reload()
+            wait(1000)
+        })
     }
 
     const modalHandleSubmitFault = () => {
         handleSubmitFoul();
-        handleRefresh()
-        hideAwayFoulModal()
-        hideHomeFoulModal()
+        wait(1000).then(() => {hideAwayFoulModal()
+            hideHomeFoulModal()})
+
     }
 
     return(

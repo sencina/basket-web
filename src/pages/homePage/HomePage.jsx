@@ -4,11 +4,9 @@ import MatchScore from "../../common/component/matchScore/MatchScore";
 import PlayerList from "../../common/component/playerList/PlayerList";
 import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal";
 import CreateMatchModal from "../../common/component/createMatchModal/CreateMatchModal";
-import {useRequestService} from "../../service/requestService";
 
-const HomePage = () => {
+const HomePage = ({service}) => {
 
-    const service = useRequestService()
     const [currentMatch, setCurrentMatch] = useState({
         matchId:'1',
         localTeam: {
@@ -17,6 +15,8 @@ const HomePage = () => {
             score: 69,
             players: [{id:'1',name: 'player1'}, {id:'2',name: 'player2'},{id:'3',name: 'player3'}, {id:'4',name: 'player4'}, {id:'5',name: 'player5'}]
         },
+        localTeamScore: 69,
+        visitorTeamScore: 42,
         visitorTeam: {
             teamId: 2,
             name: 'Away Team',
@@ -42,7 +42,9 @@ const HomePage = () => {
             score: 42,
             players: [{id:'6',name: 'player6'}, {id:'7',name: 'player7'},{id:'8',name: 'player8'}, {id:'9',name: 'player9'}, {id:'0',name: 'player0'}]
         },
-        isFinished: false
+        isFinished: false,
+        localTeamScore: 69,
+        visitorTeamScore: 42
     },
         {
             matchId:'2',
@@ -58,7 +60,9 @@ const HomePage = () => {
                 score: 0,
                 players: [{id:'6',name: 'player6'}, {id:'7',name: 'player7'},{id:'8',name: 'player8'}, {id:'9',name: 'player9'}, {id:'0',name: 'player0'}]
             },
-            isFinished: false
+            isFinished: false,
+            localTeamScore: 0,
+            visitorTeamScore: 0
         }
     ])
     const [currentMatchId, setCurrentMatchId] = useState('90fc3362-ed42-449d-941c-8586adc13db1')
@@ -128,6 +132,7 @@ const HomePage = () => {
                 // setMatches((prevState) => {prevState, response.data})
                 // setCurrentMatch((prevState) => {prevState, response.data[0]})
                 // setCurrentMatchId((prevState) => {prevState, response.data[0].id})
+                if (response.data.length === 0) return
                 setMatches(response.data)
                 setCurrentMatch(response.data[0])
                 setCurrentMatchId((response.data[0].id))
