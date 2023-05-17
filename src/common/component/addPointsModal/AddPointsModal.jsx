@@ -4,7 +4,7 @@ import PointsModal from "../pointsModal/PointsModal";
 import FoulModal from "../foulModal/FoulModal";
 import {useRequestService} from "../../../service/requestService";
 
-const AddPointsModal = ({match, handleRefresh, id}) => {
+const AddPointsModal = ({match, handleRefresh, id, scoreData, foulData, setScoreData, setFoulData, handleSubmitPoints, handleSubmitFoul}) => {
 
     const service = useRequestService()
 
@@ -12,18 +12,6 @@ const AddPointsModal = ({match, handleRefresh, id}) => {
     const [isVisibleAway, setIsVisibleAway] = useState(false);
     const [isVisibleHomeFault, setIsVisibleHomeFault] = useState(false);
     const [isVisibleAwayFault, setIsVisibleAwayFault] = useState(false);
-
-    const [scoreData, setScoreData] = useState({
-        matchId: id,
-        playerId: match.localTeam.players[0].id,
-        points: 1
-    });
-
-    const [foulData, setFoulData] = useState({
-        matchId: id,
-        playerId: match.localTeam.players[0].id,
-        type: 'YELLOW_CARD'
-    });
 
     const modalRef = useRef(null);
 
@@ -89,17 +77,12 @@ const AddPointsModal = ({match, handleRefresh, id}) => {
         setFoulData({...foulData, matchId: match.id, playerId: playerId})
     }
 
-    const handleSubmitPoints = async () => {
-        await service.addPoints(scoreData)
+    const modalHandleSubmitPoints = () => {
+        handleSubmitPoints();
         handleRefresh()
-        hideHomeModal();
-        hideAwayModal();
-    }
-
-    const handleSubmitFault = async () => {
-        await service.addFault(foulData)
-        hideAwayFoulModal();
-        hideHomeFoulModal();
+        hideAwayModal()
+        hideHomeModal()
+        // local.window.reload()
     }
 
     return(

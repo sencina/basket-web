@@ -63,6 +63,18 @@ const HomePage = () => {
     ])
     const [currentMatchId, setCurrentMatchId] = useState('90fc3362-ed42-449d-941c-8586adc13db1')
 
+    const [scoreData, setScoreData] = useState({
+        matchId: currentMatchId,
+        playerId: currentMatch.localTeam.players[0].id,
+        points: 1
+    });
+
+    const [foulData, setFoulData] = useState({
+        matchId: currentMatchId,
+        playerId: currentMatch.localTeam.players[0].id,
+        type: 'YELLOW_CARD'
+    });
+
     const handleChangeData = (key) => (event) => {
         setMatchData({...matchData, [key]: event.target.value})
     }
@@ -107,12 +119,33 @@ const HomePage = () => {
         }
     }
 
+    const handleSubmitPoints = async () => {
+        await service.addPoints(scoreData);
+    }
+
+    const handleSubmitFault = async () => {
+        await service.addFault(foulData)
+    }
+
     useEffect( () => {
         try {
             service.getMatches().then(response => {
+                // setMatches((prevState) => {prevState, response.data})
+                // setCurrentMatch((prevState) => {prevState, response.data[0]})
+                // setCurrentMatchId((prevState) => {prevState, response.data[0].id})
                 setMatches(response.data)
                 setCurrentMatch(response.data[0])
-                setCurrentMatchId(response.data[0].id)
+                setCurrentMatchId((response.data[0].id))
+                setScoreData({
+                    ...scoreData,
+                    matchId: response.data[0].id,
+                    playerId: response.data[0].localTeam.players[0].id,
+                })
+                setFoulData({
+                    ...scoreData,
+                    matchId: response.data[0].id,
+                    playerId: response.data[0].localTeam.players[0].id,
+                })
             })
             service.getTeams().then(response => {
                 setTeams(response.data)
@@ -140,7 +173,7 @@ const HomePage = () => {
                         </select>
                     </div>
                     <MatchScore id={'add-points-modal'} match={currentMatch}/>
-                    <AddPointsModal match={currentMatch} handleRefresh={handlePointsRefresh} id={currentMatchId}/>
+                    <AddPointsModal scoreData={scoreData} foulData={foulData} setScoreData={setScoreData} setFoulData={setFoulData} match={currentMatch} handleRefresh={handlePointsRefresh} id={currentMatchId} handleSubmitPoints={handleSubmitPoints} handleSubmitFoul={handleSubmitFault} />
                     <div className={'home-page-name-container'}>
                         <h2>Players</h2>
                     </div>

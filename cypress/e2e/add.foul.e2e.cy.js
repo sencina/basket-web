@@ -5,7 +5,7 @@ describe('template spec', () => {
 //     })
 
     it('should add fault',  async () => {
-        cy.visit('/')
+        cy.visit('http://localhost:3000/')
 
         cy.wait(1000) //so data loads
 
