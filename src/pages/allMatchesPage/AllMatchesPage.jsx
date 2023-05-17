@@ -1,6 +1,7 @@
 import './AllMatchesPage.css'
 import React, {useEffect, useState} from "react";
 import {useRequestService} from "../../service/requestService";
+import {useNavigate} from "react-router";
 
 const AllMatchesPage = () => {
 
@@ -38,6 +39,7 @@ const AllMatchesPage = () => {
             isFinished: false
         }
     ])
+    const navigate = useNavigate();
 
     useEffect( () => {
         try {
@@ -50,21 +52,28 @@ const AllMatchesPage = () => {
 
     },[])
 
+    const handleClick = () => {
+        navigate('/');
+    };
+
     return(
         <div className={'matches-background'}>
             <div className={'home-menu-container'}>
-                <div className={'home-title-container'}>
-                    <h1 id={'home-page-title'} className={'home-page-title'}>-MATCHES</h1>
+                <div className={'matches-container'}>
+                    <div className={'home-title-container'}>
+                        <h1 id={'home-page-title'} className={'home-page-title'}>-MATCHES</h1>
+                    </div>
+                    {
+                        previousSeason.map(match => {
+                            return(
+                                <div className={'previous-season-match'}>
+                                    {match.localTeam.name} vs {match.visitorTeam.name}
+                                </div>
+                            )
+                        })
+                    }
                 </div>
-                {
-                    previousSeason.map(match => {
-                        return(
-                            <div className={'previous-season-match'}>
-                                {match.localTeam.name} vs {match.visitorTeam.name}
-                            </div>
-                    )
-                })
-                }
+                <button id={'gohome-page-button'} className={'gohome-page-button'} onClick={handleClick}>Return Home</button>
             </div>
         </div>
     )
