@@ -1,0 +1,25 @@
+.matches-background{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    background-size: cover;
+    display: inline-block;
+    font-family: 'Russo One', sans-serif;
+    background-image: url("../../assets/image/background3.jpg");
+}
+
+.home-page-title::before {
+    content: "ALL";
+    color: white;
+}
+
+.previous-season-match {
+    background-color: rgba(130, 130, 150, 0.44);
+    width: 80%;
+    margin-left: 10%;
+    color: white;
+    padding: 0.5vw;
+    font-size: 1.3vw;
+    margin-top: 1vw;
+    border-radius: 0.5vw;
+}

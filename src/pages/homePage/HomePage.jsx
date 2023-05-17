@@ -5,6 +5,7 @@ import PlayerList from "../../common/component/playerList/PlayerList";
 import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal";
 import CreateMatchModal from "../../common/component/createMatchModal/CreateMatchModal";
 import {useRequestService} from "../../service/requestService";
+import {useNavigate} from "react-router";
 
 const HomePage = () => {
 
@@ -62,6 +63,7 @@ const HomePage = () => {
         }
     ])
     const [currentMatchId, setCurrentMatchId] = useState('90fc3362-ed42-449d-941c-8586adc13db1')
+    const navigate = useNavigate();
 
     const handleChangeData = (key) => (event) => {
         setMatchData({...matchData, [key]: event.target.value})
@@ -107,6 +109,10 @@ const HomePage = () => {
         }
     }
 
+    const handleClick = () => {
+        navigate('/all-matches');
+    };
+
     useEffect( () => {
         try {
             service.getMatches().then(response => {
@@ -145,6 +151,7 @@ const HomePage = () => {
                         <h2>Players</h2>
                     </div>
                     <PlayerList match={currentMatch}/>
+                    <button id={'matches-page-button'} className={'matches-page-button'} onClick={handleClick}>View Matches</button>
                 </div>
             </div>
             {showCreateMatchModal && <CreateMatchModal handleChange={handleChangeData} handleOutsideClick={handleOutsideClick} teams={teams} locations={locations}/>}
