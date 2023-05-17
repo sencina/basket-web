@@ -6,7 +6,9 @@ const requestService = {
     getMatches: async () => {
         return await axios.get(URL+'/match/all')
     },
-
+    getPreviousSeason: async () => {
+        return await axios.get(URL+'/match/previous-season')
+    },
     addMatch: async (match) => {
 
         return await axios.post(`${URL}/match`, match)
@@ -24,7 +26,7 @@ const requestService = {
 
     getTeams: async () => {
         return await axios.get(URL+'/team/all')
-    }
+    },
 }
 
 const useRequestService = () => requestService;

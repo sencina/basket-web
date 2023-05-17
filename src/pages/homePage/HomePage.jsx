@@ -4,6 +4,7 @@ import MatchScore from "../../common/component/matchScore/MatchScore";
 import PlayerList from "../../common/component/playerList/PlayerList";
 import AddPointsModal from "../../common/component/addPointsModal/AddPointsModal";
 import CreateMatchModal from "../../common/component/createMatchModal/CreateMatchModal";
+import {useNavigate} from "react-router";
 
 const HomePage = ({service}) => {
 
@@ -60,9 +61,6 @@ const HomePage = ({service}) => {
                 score: 0,
                 players: [{id:'6',name: 'player6'}, {id:'7',name: 'player7'},{id:'8',name: 'player8'}, {id:'9',name: 'player9'}, {id:'0',name: 'player0'}]
             },
-            isFinished: false,
-            localTeamScore: 0,
-            visitorTeamScore: 0
         }
     ])
     const [currentMatchId, setCurrentMatchId] = useState('90fc3362-ed42-449d-941c-8586adc13db1')
@@ -78,6 +76,8 @@ const HomePage = ({service}) => {
         playerId: currentMatch.localTeam.players[0].id,
         type: 'YELLOW_CARD'
     });
+
+    const navigate = useNavigate()
 
     const handleChangeData = (key) => (event) => {
         setMatchData({...matchData, [key]: event.target.value})
@@ -125,6 +125,10 @@ const HomePage = ({service}) => {
     const handleSubmitFault = async () => {
         await service.addFault(foulData)
     }
+
+    const handleClick = () => {
+        navigate('/all-matches');
+    };
 
     useEffect( () => {
         try {
@@ -178,6 +182,7 @@ const HomePage = ({service}) => {
                         <h2>Players</h2>
                     </div>
                     <PlayerList match={currentMatch}/>
+                    <button id={'matches-page-button'} className={'matches-page-button'} onClick={handleClick}>View Matches</button>
                 </div>
             </div>
             {showCreateMatchModal && <CreateMatchModal handleChange={handleChangeData} handleOutsideClick={handleOutsideClick} teams={teams} locations={locations}/>}
