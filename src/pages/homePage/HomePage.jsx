@@ -109,14 +109,9 @@ const HomePage = () => {
         setCurrentMatch(match)
     }
 
-    const handlePointsRefresh = () => {
-        try {
-            service.getMatch(currentMatch.id).then(response => {
-                setCurrentMatch(response.data)
-            })
-        }catch (e) {
-            console.log(e)
-        }
+    const handlePointsRefresh = async () => {
+        const match = await service.getMatch(currentMatch.id)
+        setCurrentMatch(match)
     }
 
     const handleSubmitPoints = async () => {
