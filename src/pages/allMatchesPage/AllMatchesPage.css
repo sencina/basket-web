@@ -13,6 +13,11 @@
     color: white;
 }
 
+.matches-container  {
+    height: 32vw;
+    width: 100%;
+}
+
 .previous-season-match {
     background-color: rgba(130, 130, 150, 0.44);
     width: 80%;
@@ -22,4 +27,24 @@
     font-size: 1.3vw;
     margin-top: 1vw;
     border-radius: 0.5vw;
+}
+
+.gohome-page-button{
+    background-color: #ff6a00;
+    border: none;
+    color: white;
+    width: 24%;
+    height: 10%;
+    padding: 0.25vw;
+    margin-left: 38%;
+    margin-top: 5%;
+    display: inline-block;
+    font-size: 1.5vw;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+    border-radius: 0.6vw;
+    box-shadow: 0px 0.5vw 0.7vw rgba(0, 0, 0, 0.1);
+    transition: transform 0.04s;
+    min-width: 9.5vw;
 }
