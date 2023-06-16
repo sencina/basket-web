@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = 'http://localhost:8080/api';
+const URL = 'http://localhost:8080';
 const requestService = {
 
     getMatches: async () => {

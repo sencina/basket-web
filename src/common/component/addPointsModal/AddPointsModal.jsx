@@ -35,13 +35,12 @@ const AddPointsModal = ({match, handleRefresh, id, scoreData, foulData, setScore
     };
 
     const hideAwayFoulModal = () => {
-        setFoulData({...foulData, matchId: match.id, playerId: match.localTeam.players[0].id})
+        setFoulData({...foulData, matchId: match.id, playerId: match.localTeam.players[0]?.id})
         setIsVisibleAwayFault(false);
     }
 
     const hideHomeFoulModal = () => {
-        setFoulData({...foulData, matchId: match.id, playerId: match.visitorTeam.players[0].id})
-
+        setFoulData({...foulData, matchId: match.id, playerId: match.visitorTeam.players[0]?.id})
         setIsVisibleHomeFault(false);
     }
 

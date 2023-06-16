@@ -149,7 +149,7 @@ const HomePage = () => {
                     playerId: response.data[0].localTeam.players[0].id,
                 })
                 setFoulData({
-                    ...scoreData,
+                    ...foulData,
                     matchId: response.data[0].id,
                     playerId: response.data[0].localTeam.players[0].id,
                 })

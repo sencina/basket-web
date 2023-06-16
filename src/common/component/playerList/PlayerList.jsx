@@ -11,8 +11,8 @@ const PlayerList = ({match}) => {
             toReturn.push(
                 <>
                     <div className={'player-list-item'} key={i} id={'players-row-'+i}>
-                        <h3 key={'home-'+i} className={'player-list-player-name'}>{match.localTeam.players[i].name}</h3>
-                        <h3 key={'away-'+i} className={'player-list-player-name away'}>{match.visitorTeam.players[i].name}</h3>
+                        <h3 key={'home-'+i} className={'player-list-player-name'}>{match.localTeam.players[i]?.name}</h3>
+                        <h3 key={'away-'+i} className={'player-list-player-name away'}>{match.visitorTeam.players[i]?.name}</h3>
                     </div>
                     <hr className={'player-list-hr'}></hr>
                 </>
